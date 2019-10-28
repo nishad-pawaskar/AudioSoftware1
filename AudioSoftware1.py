@@ -3,6 +3,8 @@ import os, sys
 from tkinter import filedialog
 from tkinter import *
 
+wavfiles = []
+matfiles = []
 root = Tk()
 root.withdraw()
 audio = filedialog.askdirectory(title = "Select folder with .wav files")        #Open Dialog box to choose path for .wav files
@@ -13,7 +15,10 @@ else:
     with os.scandir(audio) as it:
         for entry in it:
             if not entry.name.startswith('.') and entry.is_file() and entry.name.endswith('wav'):
-                print(entry.name)
+                wavfiles.append(entry.name)
+                #print(entry.name)
+
+print(wavfiles)
 
 root = Tk()
 root.withdraw()
@@ -25,4 +30,7 @@ else:
     with os.scandir(mat) as it:
         for entry in it:
             if not entry.name.startswith('.') and entry.is_file() and entry.name.endswith('mat'):
-                print(entry.name)
+                matfiles.append(entry.name)
+                #print(entry.name)
+
+print("\n", matfiles)
